@@ -31,17 +31,11 @@ class AjaxController extends ActionController
      */
     public function getFilesAction(\TYPO3\CMS\Core\Resource\ResourceStorage $storage, $path)
     {
-        $files = $this->fileService->getByPath($storage, $path);
+        $files = $this->fileService->getFilesArrayByPath($storage, $path);
 
-        $fileSerializer = new FileArraySerializer();
-
-        $filesArray = [];
-        foreach ($files as $file) {
-            $filesArray[] = $fileSerializer->serialize($file);
-        }
         $this->view->assignMultiple([
             'fileCount' => count($files),
-            'files' => $filesArray
+            'files' => array_values($files)
         ]);
         $this->view->setVariablesToRender(['files', 'fileCount', 'links']);
     }

@@ -11,6 +11,9 @@ class FileArraySerializer
     {
         return [
             'name' => $file->getName(),
+            'type' => $file->getExtension(),
+            'size' => $file->getSize(),
+            'lastModified' => \DateTime::createFromFormat('U', $file->getModificationTime())
         ];
     }
 }
