@@ -25,7 +25,7 @@
 			</tr>
 			</thead>
 			<tbody>
-			<tr ng-repeat="file in cnt.files">
+			<tr ng-repeat="file in cnt.files | orderBy : 'name'">
 				<td>{{file.name}}</td>
 				<td><!-- actions --></td>
 				<td>{{file.type}}</td>
