@@ -1,0 +1,15 @@
+{
+    "name": "andreaswolf/modernfilelist",
+    "description": "A modern file list for the TYPO3 backend",
+    "type": "typo3-cms-extension",
+    "version": "0.0.1",
+    "authors": [
+        {
+            "name": "Andreas Wolf",
+            "email": "dev@a-w.io"
+        }
+    ],
+    "replace": {
+        "modernfilelist": "*"
+    }
+}
