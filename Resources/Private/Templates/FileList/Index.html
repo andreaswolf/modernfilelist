@@ -2,5 +2,39 @@
 
 
 <f:section name="Content">
-	Hello World!
+	<script type="text/javascript" src="{f:uri.resource(path:'JavaScript/Libraries/angular.js')}"></script>
+	<script type="text/javascript" src="{f:uri.resource(path:'JavaScript/Libraries/dirPagination.js')}"></script>
+	<script type="text/javascript">
+		// using manual bootstrapping as the ng-app directive does not work for RequireJS-based modules
+		require(['TYPO3/CMS/Modernfilelist/Module'], function() {
+			angular.bootstrap(document.getElementById('filelist'), ['filelistApp']);
+		});
+	</script>
+
+	<div id="filelist" ng-controller="FileListController as cnt" storage="{storage.uid}" path="{path}">
+		<table class="t3-table">
+			<thead>
+			<tr>
+				<td>Filename</td>
+				<td></td>
+				<td>Type</td>
+				<td>Last Modified</td>
+				<td>Size</td>
+				<td>RW</td>
+				<td>Ref</td>
+			</tr>
+			</thead>
+			<tbody>
+			<tr ng-repeat="file in cnt.files">
+				<td>{{file.name}}</td>
+				<td><!-- actions --></td>
+				<td>{{file.type}}</td>
+				<td>{{file.lastModified}}</td>
+				<td>{{file.size}}</td>
+				<td>{{file.permissions}}</td>
+				<td>{{file.referencesCount}}</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
 </f:section>

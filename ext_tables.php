@@ -17,4 +17,8 @@ if (TYPO3_MODE === 'BE') {
             'labels' => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/BackendModule.xlf',
         )
     );
+
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::registerAjaxHandler(
+        'modernfilelist::getFiles',
+        'AndreasWolf\\Modernfilelist\\Ajax\\FileListEndpoint->getFiles');
 }
