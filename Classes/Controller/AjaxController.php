@@ -1,12 +1,23 @@
 <?php
 namespace AndreasWolf\Modernfilelist\Controller;
 
+use AndreasWolf\Modernfilelist\Domain\Service\FileService;
 use TYPO3\CMS\Core\Resource\ResourceStorage;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 
 class AjaxController extends ActionController
 {
+
+    /**
+     * @var FileService
+     */
+    protected $fileService;
+
+    public function injectFileService(\AndreasWolf\Modernfilelist\Domain\Service\FileService $fileService)
+    {
+        $this->fileService = $fileService;
+    }
 
     protected function resolveViewObjectName()
     {
@@ -19,9 +30,7 @@ class AjaxController extends ActionController
      */
     public function getFilesAction(\TYPO3\CMS\Core\Resource\ResourceStorage $storage, $path)
     {
-        $folder = $storage->getFolder($path);
-
-        $files = $folder->getFiles();
+        $files = $this->fileService->getByPath($storage, $path);
 
         $filesArray = [];
         foreach ($files as $file) {
