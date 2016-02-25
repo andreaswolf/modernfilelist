@@ -31,7 +31,9 @@ class ResourceStorageConverter extends AbstractTypeConverter
         /** @var ResourceFactory $resourceFactory */
         $resourceFactory = $this->objectManager->get('TYPO3\\CMS\\Core\\Resource\\ResourceFactory');
 
-        return $resourceFactory->getStorageObject((int)$source);
+        // make sure we use storage 1 by default
+        $storageId = max(1, (int)$source);
+        return $resourceFactory->getStorageObject($storageId);
     }
 
 }
