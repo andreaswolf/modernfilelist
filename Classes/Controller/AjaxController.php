@@ -64,4 +64,29 @@ class AjaxController extends ActionController
         ]);
     }
 
+    /**
+     * @param AbstractFile $file
+     * @param string $newName
+     */
+    public function renameFileAction(\TYPO3\CMS\Core\Resource\AbstractFile $file, $newName)
+    {
+        try {
+            $file->rename($newName);
+
+            $this->view->assign('success', true);
+            $this->view->setVariablesToRender(['success', 'file', 'filename']);
+        } catch (\Exception $e) {
+            $this->view->assignMultiple([
+                'error' => $e->getMessage(),
+                'success' => false,
+            ]);
+
+            $this->view->setVariablesToRender(['success', 'error', 'file', 'filename']);
+        }
+        $this->view->assignMultiple([
+            'file' => $file->getCombinedIdentifier(),
+            'filename' => $file->getName()
+        ]);
+    }
+
 }

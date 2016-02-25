@@ -39,6 +39,23 @@ define(function () {
 							Notification.error('Deleting failed', 'File could not be deleted: ' + data['error']);
 						});
 				}
+			},
+			renameFile: function(file, newName) {
+				if (file.name == newName) {
+					console.debug("File was not renamed, skipping");
+					return;
+				}
+				console.debug("Renaming " + file.name + " to " + newName);
+
+				var oldName = file.name;
+				FileService.renameFile(file, newName)
+					.success(function (data, status) {
+						Notification.success('Operation succeeded', 'File renamed successfully');
+					})
+					.error(function(data, status) {
+						file.name = oldName;
+						Notification.error('Renaming failed', 'File could not be renamed: ' + data['error']);
+					});
 			}
 		};
 

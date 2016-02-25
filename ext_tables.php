@@ -25,4 +25,8 @@ if (TYPO3_MODE === 'BE') {
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::registerAjaxHandler(
         'modernfilelist::deleteFile',
         'AndreasWolf\\Modernfilelist\\Ajax\\FileListEndpoint->deleteFile');
+
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::registerAjaxHandler(
+        'modernfilelist::renameFile',
+        'AndreasWolf\\Modernfilelist\\Ajax\\FileListEndpoint->renameFile');
 }

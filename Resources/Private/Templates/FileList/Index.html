@@ -3,7 +3,9 @@
 
 <f:section name="Content">
 	<link rel="stylesheet" type="text/css" href="{f:uri.resource(path:'Styles/Main.css')}" />
+	<link rel="stylesheet" type="text/css" href="{f:uri.resource(path:'Styles/xeditable.css')}" />
 	<script type="text/javascript" src="{f:uri.resource(path:'JavaScript/Libraries/angular.js')}"></script>
+	<script type="text/javascript" src="{f:uri.resource(path:'JavaScript/Libraries/xeditable.min.js')}"></script>
 	<script type="text/javascript" src="{f:uri.resource(path:'JavaScript/Libraries/dirPagination.js')}"></script>
 	<script type="text/javascript">
 		// using manual bootstrapping as the ng-app directive does not work for RequireJS-based modules
@@ -29,7 +31,7 @@
 			</thead>
 			<tbody>
 			<tr dir-paginate="file in cnt.files | filter : filterFileList() | orderBy : 'name' | itemsPerPage: 25">
-				<td title="{{file.name}}">{{file.name | limitTo : 40}}{{file.name.length > 40 ? '…' : ''}}</td>
+				<td title="{{file.name}}"><span editable-text="file.name" onbeforesave="actions.renameFile(file, $data)">{{file.name | limitTo : 40}}{{file.name.length > 40 ? '…' : ''}}</span></td>
 				<td>
 					<span ng-click="actions.deleteFile(file)" class="t3-icon t3-icon-actions t3-icon-actions-edit t3-icon-edit-delete">&nbsp;</span>
 				</td>

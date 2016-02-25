@@ -44,6 +44,11 @@ class FileListEndpoint
         $this->callActionAndSendResponse('deleteFile');
     }
 
+    public function renameFile()
+    {
+        $this->callActionAndSendResponse('renameFile');
+    }
+
     /**
      * @param string $action The action in AjaxController that should be called.
      *

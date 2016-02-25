@@ -28,6 +28,28 @@ define(function () {
 						"tx_modernfilelist[file]": file.identifier
 					}
 				});
+			},
+
+			/**
+			 * Renames a file on the server.
+			 *
+			 * @param file
+			 * @param newName
+			 */
+			renameFile: function (file, newName) {
+				// PUT does not work here, as TYPO3/PHP don’t handle the body properly
+				return $http.post(TYPO3.settings.ajaxUrls['modernfilelist::renameFile'], {
+					"tx_modernfilelist[file]": file.identifier,
+					"tx_modernfilelist[newName]": newName
+				}, {
+					headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+					transformRequest: function (obj) {
+						var str = [];
+						for (var p in obj)
+							str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+						return str.join("&");
+					}
+				});
 			}
 		}
 	}];
