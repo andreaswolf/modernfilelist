@@ -15,6 +15,19 @@ define(function () {
 						"tx_modernfilelist[path]": path
 					}
 				});
+			},
+
+			/**
+			 * Removes a file from the server.
+			 *
+			 * @param file
+			 */
+			deleteFile: function (file) {
+				return $http.delete(TYPO3.settings.ajaxUrls['modernfilelist::deleteFile'], {
+					"params": {
+						"tx_modernfilelist[file]": file.identifier
+					}
+				});
 			}
 		}
 	}];

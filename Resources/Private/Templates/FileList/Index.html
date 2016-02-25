@@ -30,7 +30,9 @@
 			<tbody>
 			<tr dir-paginate="file in cnt.files | filter : filterFileList() | orderBy : 'name' | itemsPerPage: 25">
 				<td title="{{file.name}}">{{file.name | limitTo : 40}}{{file.name.length > 40 ? '…' : ''}}</td>
-				<td><!-- actions --></td>
+				<td>
+					<span ng-click="actions.deleteFile(file)" class="t3-icon t3-icon-actions t3-icon-actions-edit t3-icon-edit-delete">&nbsp;</span>
+				</td>
 				<td>{{file.type}}</td>
 				<td>{{file.lastModified | date : 'yyyy-MM-dd'}}</td>
 				<td class="filesize">{{file.size | bytes}}</td>

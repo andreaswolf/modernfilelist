@@ -21,4 +21,8 @@ if (TYPO3_MODE === 'BE') {
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::registerAjaxHandler(
         'modernfilelist::getFiles',
         'AndreasWolf\\Modernfilelist\\Ajax\\FileListEndpoint->getFiles');
+
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::registerAjaxHandler(
+        'modernfilelist::deleteFile',
+        'AndreasWolf\\Modernfilelist\\Ajax\\FileListEndpoint->deleteFile');
 }

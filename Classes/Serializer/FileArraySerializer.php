@@ -11,6 +11,10 @@ class FileArraySerializer
     {
         return [
             'name' => $file->getName(),
+            // TODO this naming might be confusing as it differs from the FAL naming convention; decide if this
+            // is ok for us.
+            'path' => $file->getIdentifier(),
+            'identifier' => $file->getCombinedIdentifier(),
             'type' => $file->getExtension(),
             'size' => $file->getSize(),
             'lastModified' => \DateTime::createFromFormat('U', $file->getModificationTime())

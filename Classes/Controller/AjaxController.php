@@ -2,7 +2,7 @@
 namespace AndreasWolf\Modernfilelist\Controller;
 
 use AndreasWolf\Modernfilelist\Domain\Service\FileService;
-use AndreasWolf\Modernfilelist\Serializer\FileArraySerializer;
+use TYPO3\CMS\Core\Resource\AbstractFile;
 use TYPO3\CMS\Core\Resource\ResourceStorage;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
@@ -38,6 +38,30 @@ class AjaxController extends ActionController
             'files' => array_values($files)
         ]);
         $this->view->setVariablesToRender(['files', 'fileCount', 'links']);
+    }
+
+    /**
+     * @param AbstractFile $file
+     */
+    public function deleteFileAction(\TYPO3\CMS\Core\Resource\AbstractFile $file)
+    {
+        try {
+            $file->delete();
+
+            $this->view->assign('success', true);
+            $this->view->setVariablesToRender(['success', 'file', 'filename']);
+        } catch (\Exception $e) {
+            $this->view->assignMultiple([
+                'error' => $e->getMessage(),
+                'success' => false,
+            ]);
+
+            $this->view->setVariablesToRender(['success', 'error', 'file', 'filename']);
+        }
+        $this->view->assignMultiple([
+            'file' => $file->getCombinedIdentifier(),
+            'filename' => $file->getName()
+        ]);
     }
 
 }
