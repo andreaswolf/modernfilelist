@@ -12,6 +12,7 @@
 	</script>
 
 	<div id="filelist" ng-controller="FileListController as cnt" storage="{storage.uid}" path="{path}">
+		Filter: <input ng-model="nameFilter" />
 		<input type="checkbox" ng-model="showOnlyWithoutReferences" id="limit-without-references" /> <label for="limit-without-references"> Nur Dateien ohne Referenzen anzeigen</label>
 		<table class="t3-table">
 			<thead>
