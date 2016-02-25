@@ -31,7 +31,7 @@
 				<td>{{file.name}}</td>
 				<td><!-- actions --></td>
 				<td>{{file.type}}</td>
-				<td>{{file.lastModified}}</td>
+				<td>{{file.lastModified | date : 'yyyy-MM-dd'}}</td>
 				<td class="filesize">{{file.size | bytes}}</td>
 				<td>{{file.permissions}}</td>
 				<td>{{file._referenceCount}}</td>
