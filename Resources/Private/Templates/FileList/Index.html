@@ -2,6 +2,7 @@
 
 
 <f:section name="Content">
+	<link rel="stylesheet" type="text/css" href="{f:uri.resource(path:'Styles/Main.css')}" />
 	<script type="text/javascript" src="{f:uri.resource(path:'JavaScript/Libraries/angular.js')}"></script>
 	<script type="text/javascript" src="{f:uri.resource(path:'JavaScript/Libraries/dirPagination.js')}"></script>
 	<script type="text/javascript">
@@ -27,7 +28,7 @@
 			</tr>
 			</thead>
 			<tbody>
-			<tr ng-repeat="file in cnt.files | filter : filterFileList() | orderBy : 'name'">
+			<tr dir-paginate="file in cnt.files | filter : filterFileList() | orderBy : 'name' | itemsPerPage: 25">
 				<td>{{file.name}}</td>
 				<td><!-- actions --></td>
 				<td>{{file.type}}</td>
@@ -38,5 +39,6 @@
 			</tr>
 			</tbody>
 		</table>
+		<dir-pagination-controls></dir-pagination-controls>
 	</div>
 </f:section>
