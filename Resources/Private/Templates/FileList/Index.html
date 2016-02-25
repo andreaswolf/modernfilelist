@@ -30,7 +30,7 @@
 				<td><!-- actions --></td>
 				<td>{{file.type}}</td>
 				<td>{{file.lastModified}}</td>
-				<td>{{file.size}}</td>
+				<td class="filesize">{{file.size | bytes}}</td>
 				<td>{{file.permissions}}</td>
 				<td>{{file._referenceCount}}</td>
 			</tr>
