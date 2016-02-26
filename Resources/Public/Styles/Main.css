@@ -1,5 +1,6 @@
-td.file-actions span {
-	cursor:pointer;
+td.file-actions span,
+.editable-click {
+	cursor: pointer;
 }
 
 ul.pagination {
