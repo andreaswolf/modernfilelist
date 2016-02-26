@@ -43,7 +43,11 @@ define(function () {
 			renameFile: function(file, newName) {
 				if (file.name == newName) {
 					console.debug("File was not renamed, skipping");
-					return;
+					return false;
+				}
+				if (newName.trim() == '') {
+					Notification.error('Empty filename not allowed', 'The file name may not be empty');
+					return false;
 				}
 				console.debug("Renaming " + file.name + " to " + newName);
 
