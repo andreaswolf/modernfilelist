@@ -3,6 +3,10 @@ td.file-actions span,
 	cursor: pointer;
 }
 
+#filelist form.editable-wrap {
+	margin: 0;
+}
+
 ul.pagination {
 	margin: 0;
 	padding: 0;
