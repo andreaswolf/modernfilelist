@@ -1,3 +1,7 @@
+td.file-actions span {
+	cursor:pointer;
+}
+
 ul.pagination {
 	margin: 0;
 	padding: 0;

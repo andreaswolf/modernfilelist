@@ -32,7 +32,7 @@
 			<tbody>
 			<tr dir-paginate="file in cnt.files | filter : filterFileList() | orderBy : 'name' | itemsPerPage: 25">
 				<td title="{{file.name}}"><span editable-text="file.name" onbeforesave="actions.renameFile(file, $data)">{{file.name | limitTo : 40}}{{file.name.length > 40 ? '…' : ''}}</span></td>
-				<td>
+				<td class="file-actions">
 					<span ng-click="actions.deleteFile(file)" class="t3-icon t3-icon-actions t3-icon-actions-edit t3-icon-edit-delete">&nbsp;</span>
 				</td>
 				<td>{{file.type}}</td>
